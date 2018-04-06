@@ -1,0 +1,3 @@
+﻿namespace DomainDrivenCore.SampleWeb.Database
+{
+}
