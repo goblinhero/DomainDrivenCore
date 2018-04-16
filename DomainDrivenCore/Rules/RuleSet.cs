@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace DomainDrivenCore
+namespace DomainDrivenCore.Rules
 {
     public class RuleSet<T>
     {

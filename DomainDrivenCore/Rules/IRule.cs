@@ -1,4 +1,4 @@
-﻿namespace DomainDrivenCore
+﻿namespace DomainDrivenCore.Rules
 {
     public interface IRule<T>
     {

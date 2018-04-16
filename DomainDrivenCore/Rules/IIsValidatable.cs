@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DomainDrivenCore
+namespace DomainDrivenCore.Rules
 {
     public interface IIsValidatable
     {

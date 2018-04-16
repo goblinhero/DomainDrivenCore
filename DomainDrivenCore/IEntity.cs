@@ -1,11 +1,9 @@
-﻿using System;
+﻿using DomainDrivenCore.Rules;
 
 namespace DomainDrivenCore
 {
-    public interface IEntity : IIsValidatable
+    public interface IEntity : IIsValidatable, IHasId, IHasCreationDate
     {
-        long Id { get; }
         int Version { get; }
-        DateTime Created { get; set; }
     }
 }
