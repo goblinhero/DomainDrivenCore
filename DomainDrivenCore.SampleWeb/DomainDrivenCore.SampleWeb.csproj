@@ -18,8 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\DomainDrivenCore.NHibernate\DomainDrivenCore.NHibernate.csproj" />
+    <ProjectReference Include="..\DomainDrivenCore.NHibernate\DomainDrivenCore.NHibernate.csproj" />
     <ProjectReference Include="..\DomainDrivenCore.SampleDomain\DomainDrivenCore.SampleDomain.csproj" />
+    <ProjectReference Include="..\DomainDrivenCore\DomainDrivenCore.csproj" />
   </ItemGroup>
 
 </Project>
