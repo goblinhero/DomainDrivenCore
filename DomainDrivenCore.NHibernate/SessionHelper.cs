@@ -49,7 +49,12 @@ namespace DomainDrivenCore.NHibernate
             };
             configuration.EventListeners.PreUpdateEventListeners = new IPreUpdateEventListener[]
             {
-                new CheckValidityListener()
+                new CheckValidityListener(),
+                new CheckTransactionalUpdateListener()
+            };
+            configuration.EventListeners.PreDeleteEventListeners = new IPreDeleteEventListener[]
+            {
+                new DisallowDeleteTransactionListener()
             };
             if (createDatabase)
                 new SchemaExport(configuration).Execute(true, true, false);
