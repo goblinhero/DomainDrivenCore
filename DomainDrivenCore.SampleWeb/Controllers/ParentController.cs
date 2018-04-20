@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using DomainDrivenCore.NHibernate;
+﻿using DomainDrivenCore.NHibernate.Helpers;
 using DomainDrivenCore.SampleDomain;
 using DomainDrivenCore.SampleWeb.Commands;
 using DomainDrivenCore.SampleWeb.Contracts;
@@ -9,44 +8,34 @@ using Microsoft.AspNetCore.Mvc;
 namespace DomainDrivenCore.SampleWeb.Controllers
 {
     [Route("api/[controller]")]
-    public class ParentController : Controller
+    public class ParentController : DomainController
     {
-        private readonly SessionHelper _sessionHelper = new SessionHelper();
-
         // GET api/parent
         [HttpGet]
-        public IEnumerable<ParentDto> Get()
+        public IActionResult Get(ListOptions listOptions)
         {
-            return _sessionHelper.TryExecuteQuery(new ParentQuery(), out var parents, out var _)
-                ? parents
-                : null;
+            return WrapQuery(new ParentQuery(listOptions));
         }
 
         // POST api/parent
         [HttpPost]
-        public SaveResultDto Post([FromBody] ParentDto dto)
+        public IActionResult Post([FromBody] ParentDto dto)
         {
-            return _sessionHelper.TryCreateEntity(new ParentUpdater(dto), out var assignedId, out var errors)
-                ? SaveResultDto.SuccessResult(assignedId)
-                : SaveResultDto.ErrorResult(errors);
+            return WrapCreate(new ParentUpdater(dto));
         }
 
         // PUT api/parent
         [HttpPut("{id}")]
-        public SaveResultDto Put(long id, [FromBody] ParentDto dto)
+        public IActionResult Put(long id, [FromBody] ParentDto dto)
         {
-            return _sessionHelper.TryUpdateEntity(new ParentUpdater(dto), id, out var errors)
-                ? SaveResultDto.SuccessResult(id)
-                : SaveResultDto.ErrorResult(errors);
+            return WrapUpdate(id, new ParentUpdater(dto));
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public SaveResultDto Delete(long id)
+        public IActionResult Delete(long id)
         {
-            return _sessionHelper.TryDeleteEntity<Parent>(id, out var errors)
-                ? SaveResultDto.SuccessResult()
-                : SaveResultDto.ErrorResult(errors);
+            return WrapDelete<Parent>(id);
         }
     }
 }

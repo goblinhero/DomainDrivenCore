@@ -98,7 +98,7 @@ namespace DomainDrivenCore.NHibernate
         }
 
         public bool TryDeleteEntity<T>(long id, out IEnumerable<string> errors)
-            where T : IEntity
+            where T : IHasId
         {
             using (var session = _sessionFactory.OpenSession())
             using (var tx = session.BeginTransaction())
@@ -114,7 +114,6 @@ namespace DomainDrivenCore.NHibernate
                 return Success(out errors);
             }
         }
-
         public bool TryExecuteQuery<T>(IExecutableQuery<T> query, out T result, out IEnumerable<string> errors)
         {
             using (var session = _sessionFactory.OpenSession())
