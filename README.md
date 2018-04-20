@@ -1,5 +1,5 @@
 # DomainDrivenCore
-One way of doing domain driven business application in .NET core using nHibernate and custom rule engines
+One way of doing domain driven business application in .NET core using NHibernate and custom rule engines. UI-agnostic, so use whatever floats your boat on the UI end. This is about building the API and the domain.
 
 ### TL;DR
 Want to build a CRUD application and heard about DDD? This is the place for you. There are no silver bullets here, but maybe a few nuggets of convinience.
